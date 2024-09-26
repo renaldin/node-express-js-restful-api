@@ -135,7 +135,9 @@ const search = async (user, request) => {
         skip: skip
     })
     const totalItems = await prismaClient.contact.count({
-        where: filters
+        where: {
+            AND: filters
+        }
     })
     return {
         paging: {
